@@ -1,0 +1,24 @@
+{% extends 'mydiary/base.html' %}
+{% block content %}
+<h1>일기 수정하기</h1>
+
+<head>
+    <style>
+        body{
+            text-align: center;
+            
+        }
+        body > h1{
+            padding-top: 30px;
+            color: brown;
+        }
+    </style>
+</head>
+
+
+<form method="POST" class="post-form">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="save btn btn-default">Save</button>
+</form>
+
+{% endblock %}

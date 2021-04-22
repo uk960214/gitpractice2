@@ -1,0 +1,30 @@
+{% extends 'mydiary/base.html' %}
+{% block content %}
+{% load static %}
+
+<main>
+    <header class="posting-header">
+        <span class="posting-en">Posting</span>
+        <h2 class="posting-h">서강대 멋사 게시판</h2>
+        <a class="text-info" href="{% url 'new' %}">포스트 작성하기</a>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            {% for post in posts_list %}
+            <div class="col-lg-4 col-12 pb-5">
+                <div class="card">
+                    <img src="{% static 'mydiary/img/babylion.jpg' %}" class="card-img-top" alt="babylion">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <p class="card-text">{{ post.body }}</p>
+                        <a href="{% url 'detail' pk=post.pk %}" class="btn btn-dark">포스트 보기</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+
+{% endblock %}
